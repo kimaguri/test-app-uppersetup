@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+
+import {Header} from './components/header';
+import {MovieList} from './components/movie-list';
+import {Pagination} from './components/pagination';
+import {fetchMovies} from "./utility";
+import {ResultDescription} from "./components/result-description";
+
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
+  const [state, setState] = useState({
+    movies: [],
+    totalResults: 0,
+    isLoading: true
+  });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchText, setSearchText] = useState('Batman');
+
+  const totalPages = Math.ceil(state.totalResults / state.movies.length);
+
+  const handleSearch = (searchQuery: string) => {
+    setSearchText(searchQuery);
+    setCurrentPage(1);
+  };
+
+  useEffect(() => {
+    fetchMovies({ searchText, pageNumber: currentPage }).then((data) => {
+      setState({
+        movies: data['Search'] || [],
+        totalResults: data['totalResults'] || 0,
+        isLoading: false
+      });
+      window.scrollTo(0, 0);
+    });
+  }, [searchText, currentPage]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="content-container">
+        <Header searchValue={searchText} onSearch={handleSearch} />
+        <ResultDescription searchText={searchText} totalResults={state.totalResults} />
+        <MovieList movies={state?.movies} isLoading={state.isLoading} />
+        {state.movies.length > 0 && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default App;

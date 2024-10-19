@@ -1,0 +1,41 @@
+.movieCard {
+  display: flex;
+  flex-direction: column;
+  width: 245px;
+  min-height: 450px;
+  overflow: hidden;
+}
+
+.movieCardImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #6627FF;
+  border-radius: 8px;
+  max-width: 100%;
+  min-height: 270px;
+  height: 270px;
+  overflow: hidden;
+}
+
+.movieCardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movieCardDescription {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 30px;
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.placeholderImage {
+  max-width: 100px; 
+  max-height: 100px; 
+  object-fit: contain;
+}

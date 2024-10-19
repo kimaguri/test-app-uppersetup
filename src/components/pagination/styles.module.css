@@ -1,0 +1,47 @@
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.pageButton, .arrowButton {
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s, border-color 0.3s;
+  border-left: none;
+}
+
+.pageButton:first-child, .arrowButton:first-child {
+  border-radius: 8px 0 0 8px;
+  border-left: 1px solid #ddd;
+}
+
+.pageButton:last-child, .arrowButton:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.pageButton:hover, .arrowButton:hover {
+  background-color: #e6e6e6;
+  border-color: #ccc;
+}
+
+.pageButton.active {
+  background-color: #FCFCFF;
+}
+
+.arrowButton {
+  font-weight: bold;
+}
+
+.pageButton:disabled, .arrowButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

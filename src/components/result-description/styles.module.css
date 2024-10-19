@@ -1,0 +1,38 @@
+.resultDescription {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.searchText {
+    margin: 0;
+}
+
+.searchText span {
+    text-decoration: underline;
+}
+
+.resultsBadge {
+    background-color: #6627FF;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-left: 20px;
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+    .resultDescription {
+        justify-content: center;
+    }
+
+    .resultsBadge {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
